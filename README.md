@@ -74,8 +74,7 @@ Default ``
     allure_results: build/allure-results
     gh_pages: gh-pages
     allure_report: allure-report
-    allure_history: allure-history
-    test_env: QA    
+    allure_history: allure-history    
 ```
 
 ## Finally you need to publish on GitHub Pages
@@ -101,5 +100,16 @@ Default ``
       context: 'Test report'
       state: 'success'
       sha: ${{ github.event.pull_request.head.sha }}
-      target_url: simple-elf.github.io/github-allure-history/${{ github.run_number }}
+      target_url: PavanMudigonda.github.io/allure-html-reporter-github-pages/${{ github.run_number }}
 ```
+
+## Sample Screenshot
+
+<img width="666" alt="image" src="https://user-images.githubusercontent.com/29324338/174334674-9ad8df6f-1a50-4cce-b30b-b39b82415d45.png">
+
+
+
+## Sample GH Pages Screenshot
+
+<img width="1440" alt="image" src="https://user-images.githubusercontent.com/29324338/174334734-8e3857d6-3a95-4027-832c-c512c3997aca.png">
+
