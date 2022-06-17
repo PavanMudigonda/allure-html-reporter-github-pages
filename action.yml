@@ -5,6 +5,10 @@ branding:
   icon: 'layout'
   color: 'green'
 inputs:
+  test_env:
+    description: 'Test Environment'
+    required: true
+    default: 'QA'
   allure_results:
     description: 'Allure test result data dir'
     required: true
