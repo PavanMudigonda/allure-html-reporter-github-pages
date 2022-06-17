@@ -39,7 +39,7 @@ if (( COUNT > INPUT_KEEP_REPORTS )); then
   cd ${GITHUB_WORKSPACE}
 fi
 
-cat index-template.html > ./${INPUT_PLAYWRIGHT_HISTORY}/index.html
+cat index-template.html > ./${INPUT_ALLURE_HISTORY}/index.html
 
 echo "├── <a href="./${INPUT_GITHUB_RUN_NUM}/index.html">Latest Test Results - RUN ID: ${INPUT_GITHUB_RUN_NUM}</a><br>" >> ./${INPUT_ALLURE_HISTORY}/index.html;
 ls -l ./${INPUT_ALLURE_HISTORY} | grep "^d" | sort -nr | awk -F' ' '{print $9;}' | while read line;
