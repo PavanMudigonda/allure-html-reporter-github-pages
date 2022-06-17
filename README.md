@@ -2,7 +2,7 @@
 
 Generates Allure Report with history.
 
-Example workflow file [allure-report](https://github.com/simple-elf/allure-report-action/blob/master/.github/workflows/allure-report.yml)
+Example workflow file [allure-html-reporter-github-pages](https://github.com/PavanMudigonda/allure-html-reporter-github-pages/blob/main/.github/workflows/main.yml)
 
 ## Inputs
 
@@ -60,6 +60,7 @@ Default ``
     gh_pages: gh-pages
     allure_report: allure-report
     allure_history: allure-history
+    test_env: QA
 ```
 
 ## Example usage (github action)
@@ -74,6 +75,7 @@ Default ``
     gh_pages: gh-pages
     allure_report: allure-report
     allure_history: allure-history
+    test_env: QA    
 ```
 
 ## Finally you need to publish on GitHub Pages
