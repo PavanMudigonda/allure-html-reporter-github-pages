@@ -44,7 +44,7 @@ Default `allure-history`
 ### `subfolder`
 
 The relative path to the project folder, if you have few different projects in the repository. 
-This relative path also will be added to GitHub Pages link. Example project [allure-examples](https://github.com/simple-elf/allure-examples).
+This relative path also will be added to GitHub Pages link. 
 
 Default ``
 
@@ -52,11 +52,11 @@ Default ``
 
 ```yaml
 - name: Test local action
-  uses: ./allure-report-action
+  uses: ./allure-html-reporter-github-pages
   if: always()
   id: allure-report
   with:
-    allure_results: build/allure-results
+    allure_results: allure-results
     gh_pages: gh-pages
     allure_report: allure-report
     allure_history: allure-history
@@ -67,11 +67,11 @@ Default ``
 
 ```yaml
 - name: Test marketplace action
-  uses: simple-elf/allure-report-action@master
+  uses: PavanMudigonda/allure-html-reporter-github-pages@main
   if: always()
   id: allure-report
   with:
-    allure_results: build/allure-results
+    allure_results: allure-results
     gh_pages: gh-pages
     allure_report: allure-report
     allure_history: allure-history    
@@ -82,7 +82,7 @@ Default ``
 ```yaml
 - name: Deploy report to Github Pages
   if: always()
-  uses: peaceiris/actions-gh-pages@v2
+  uses: peaceiris/actions-gh-pages@v3
   env:
     PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     PUBLISH_BRANCH: gh-pages
