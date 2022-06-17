@@ -77,7 +77,7 @@ Default ``
     allure_history: allure-history    
 ```
 
-## Finally you need to publish on GitHub Pages
+## Publish to GitHub Pages
 
 ```yaml
 - name: Deploy report to Github Pages
@@ -87,6 +87,18 @@ Default ``
     PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     PUBLISH_BRANCH: gh-pages
     PUBLISH_DIR: allure-history
+```
+
+## Publish to Azure Blob instead
+
+# Reference https://github.com/marketplace/actions/azure-static-website
+
+```yaml
+    - uses: tibor19/static-website-deploy@v1
+      with:
+        enabled-static-website: 'true'
+        folder: 'allure-history'
+        connection-string: ${{ secrets.CONNECTION_STRING }}
 ```
 
 ## Also you can post the link to the report in the checks section
