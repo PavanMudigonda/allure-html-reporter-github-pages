@@ -1,5 +1,5 @@
-name: 'Allure Report with history'
-description: 'Generate Allure Report with history'
+name: 'allure-html-reporter-github-pages'
+description: 'Allure HTML Reporter for Github Pages '
 author: 'simple-elf'
 branding:
   icon: 'layout'
