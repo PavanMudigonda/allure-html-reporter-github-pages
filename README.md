@@ -74,7 +74,7 @@ Default ``
 
 ```yaml
 - name: Test marketplace action
-  uses: PavanMudigonda/allure-html-reporter-github-pages@main
+  uses: PavanMudigonda/allure-html-reporter-github-pages@v1.0
   if: always()
   id: allure-report
   with:
