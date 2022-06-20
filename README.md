@@ -89,18 +89,6 @@ Default ``
     PUBLISH_DIR: allure-history
 ```
 
-## Publish to Azure Blob instead
-
-# Reference https://github.com/marketplace/actions/azure-static-website
-
-```yaml
-    - uses: tibor19/static-website-deploy@v1
-      with:
-        enabled-static-website: 'true'
-        folder: 'allure-history'
-        connection-string: ${{ secrets.CONNECTION_STRING }}
-```
-
 ## Also you can post the link to the report in the checks section
 
 ```yaml
