@@ -110,6 +110,68 @@ Default ``
       target_url: PavanMudigonda.github.io/allure-html-reporter-github-pages/${{ github.run_number }}
 ```
 
+## Also you can post link to the report to MS Teams
+```yaml
+
+- name: Message MS Teams Channel
+  uses: toko-bifrost/ms-teams-deploy-card@master
+  with:
+    github-token: ${{ github.token }}
+    webhook-uri: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
+    custom-facts: |
+      - name: Github Actions Test Results
+        value: "http://example.com/${{ github.run_id }}"
+    custom-actions: |
+      - text: View CI Test Results
+        url: "https://PavanMudigonda.github.io/html-reporter-github-pages/${{ github.run_number }}"
+ ```
+ 
+ ## Also you can post link to the report to MS Outlook
+ 
+ ```yaml
+ 
+ 
+ - name: Send mail
+  uses: dawidd6/action-send-mail@v3
+  with:
+    # Required mail server address:
+    server_address: smtp.gmail.com
+    # Required mail server port:
+    server_port: 465
+    # Optional (recommended): mail server username:
+    username: ${{secrets.MAIL_USERNAME}}
+    # Optional (recommended) mail server password:
+    password: ${{secrets.MAIL_PASSWORD}}
+    # Required mail subject:
+    subject: Github Actions job result
+    # Required recipients' addresses:
+    to: obiwan@example.com,yoda@example.com
+    # Required sender full name (address can be skipped):
+    from: Luke Skywalker # <user@example.com>
+    # Optional whether this connection use TLS (default is true if server_port is 465)
+    secure: true
+    # Optional plain body:
+    body: Build job of ${{github.repository}} completed successfully!
+    # Optional HTML body read from file:
+    html_body: file://README.html
+    # Optional carbon copy recipients:
+    cc: kyloren@example.com,leia@example.com
+    # Optional blind carbon copy recipients:
+    bcc: r2d2@example.com,hansolo@example.com
+    # Optional recipient of the email response:
+    reply_to: luke@example.com
+    # Optional Message ID this message is replying to:
+    in_reply_to: <random-luke@example.com>
+    # Optional unsigned/invalid certificates allowance:
+    ignore_cert: true
+    # Optional converting Markdown to HTML (set content_type to text/html too):
+    convert_markdown: true
+    # Optional attachments:
+    attachments: attachments.zip,git.diff,./dist/static/*.js
+    # Optional priority: 'high', 'normal' (default) or 'low'
+    priority: low
+ ```
+ 
 ## Sample Screenshot
 
 <img width="666" alt="image" src="https://user-images.githubusercontent.com/29324338/174334674-9ad8df6f-1a50-4cce-b30b-b39b82415d45.png">
