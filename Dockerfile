@@ -3,8 +3,6 @@ FROM openjdk:8-jre-alpine
 ARG RELEASE=2.18.1
 ARG ALLURE_REPO=https://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline
 
-https://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline/2.18.1/allure-commandline-2.18.1.zip
-
 RUN echo $RELEASE && \
     apk update && \
     apk add --no-cache bash wget unzip && \
