@@ -6,7 +6,9 @@ ARG ALLURE_REPO=https://repo.maven.apache.org/maven2/io/qameta/allure/allure-com
 RUN echo $RELEASE && \
     apk update && \
     apk add --no-cache bash wget unzip && \
-    rm -rf /var/cache/apk/*
+    rm -rf /var/cache/apk/* && \
+    apk add curl && \
+    apk add jq
 
 RUN wget --no-verbose -O /allure-$RELEASE.tgz $ALLURE_REPO/$RELEASE/allure-commandline-$RELEASE.tgz && \
     tar -xf /allure-$RELEASE.tgz && \
