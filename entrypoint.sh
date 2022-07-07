@@ -75,22 +75,19 @@ cat index-template.html > ./${INPUT_ALLURE_HISTORY}/index.html
 echo "├── <a href="./${INPUT_GITHUB_RUN_NUM}/index.html">RUN ID: ${INPUT_GITHUB_RUN_NUM} - Latest </a><br>" >> ./${INPUT_ALLURE_HISTORY}/index.html;
 ls -l ./${INPUT_ALLURE_HISTORY} | grep "^d" | sort -nr | awk -F' ' '{print $9;}' | sed 's/last-history//' | while read line;
     do
-#       RUN_ID=$(awk -v '$1 == $line {print $9}');
-#         RUN_ID=$(awk -F '{print $0;}');
 	REPO=$GITHUB_REPOSITORY
 	TEMP_FILE="temp.json"
-    curl \
-        --silent \
-        --location \
-        --request GET \
-        --header 'Accept: application/vnd.github.v4+json' \
-        --header 'Content-Type: application/json' \
-        --header "Authorization: token $GITHUB_TOKEN" \
-        --header 'cache-control: no-cache' \
-        "https://api.github.com/repos/${REPO}/actions/runs" > $TEMP_FILE
-
-    CREATED_AT=$(jq -r '.workflow_runs[] | select(.run_number=="${line}") | .created_at' $TEMP_FILE)
-        echo "├── <a href="./"${line}"/">RUN ID: "${line}" -  "${CREATED_AT}" </a><br>" >> ./${INPUT_ALLURE_HISTORY}/index.html; 
+	    curl \
+		--silent \
+		--location \
+		--request GET \
+		--header 'Accept: application/vnd.github.v4+json' \
+		--header 'Content-Type: application/json' \
+		--header "Authorization: token $GITHUB_TOKEN" \
+		--header 'cache-control: no-cache' \
+		"https://api.github.com/repos/${REPO}/actions/runs" > $TEMP_FILE
+	    CREATED_AT=$(jq -r '.workflow_runs[] | select(.run_number=="${line}") | .created_at' $TEMP_FILE)
+	    echo "├── <a href="./"${line}"/">RUN ID: "${line}" -  "${CREATED_AT}" </a><br>" >> ./${INPUT_ALLURE_HISTORY}/index.html; 
     done;
 echo "</html>" >> ./${INPUT_ALLURE_HISTORY}/index.html;
 # cat ./${INPUT_PLAYWRIGHT_HISTORY}/index.html
