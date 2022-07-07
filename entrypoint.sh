@@ -90,7 +90,7 @@ ls -l ./${INPUT_ALLURE_HISTORY} | grep "^d" | sort -nr | awk -F' ' '{print $9;}'
         "https://api.github.com/repos/${REPO}/actions/runs" > $TEMP_FILE
 
     CREATED_AT=$(jq -r '.workflow_runs[] | select(.run_number==$line) | .created_at' $TEMP_FILE)
-        echo "├── <a href="./"${line}"/">RUN ID: "${line}" (${CREATED_AT})</a><br>" >> ./${INPUT_ALLURE_HISTORY}/index.html; 
+        echo "├── <a href="./"${line}"/">RUN ID: "${line}" Created At "$CREATED_AT"</a><br>" >> ./${INPUT_ALLURE_HISTORY}/index.html; 
     done;
 echo "</html>" >> ./${INPUT_ALLURE_HISTORY}/index.html;
 # cat ./${INPUT_PLAYWRIGHT_HISTORY}/index.html
