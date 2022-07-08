@@ -75,6 +75,8 @@ cat index-template.html > ./${INPUT_ALLURE_HISTORY}/index.html
 echo "├── <a href="./${INPUT_GITHUB_RUN_NUM}/index.html">RUN ID: ${INPUT_GITHUB_RUN_NUM} - Latest </a><br>" >> ./${INPUT_ALLURE_HISTORY}/index.html;
 ls -l ./${INPUT_ALLURE_HISTORY} | grep "^d" | sort -nr | awk -F' ' '{print $9;}' | sed 's/last-history//' | while read line;
     do
+    	    line=$((${line}));
+	    
 	    curl \
 		--silent \
 		--location \
@@ -85,7 +87,7 @@ ls -l ./${INPUT_ALLURE_HISTORY} | grep "^d" | sort -nr | awk -F' ' '{print $9;}'
 		--header 'cache-control: no-cache' \
 		"https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/runs" > temp.json;
 		
-	CREATED_AT=$(jq -r '.workflow_runs[] | select(.run_number=="$((${line}))") | .created_at' $TEMP_FILE);    
+	CREATED_AT=$(jq -r '.workflow_runs[] | select(.run_number=="$line") | .created_at' $TEMP_FILE);    
 	echo "├── <a href="./"${line}"/">RUN ID: "${line}" -  "${CREATED_AT}" </a><br>" >> ./${INPUT_ALLURE_HISTORY}/index.html; 
 	
     done;
