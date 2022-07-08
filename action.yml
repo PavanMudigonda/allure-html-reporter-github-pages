@@ -5,6 +5,10 @@ branding:
   icon: 'layout'
   color: 'green'
 inputs:
+  token:
+    description: 'Github Token'
+    required: true
+    default: ${{ secrets.GITHUB_TOKEN }}
   test_env:
     description: 'Test Environment'
     required: true
