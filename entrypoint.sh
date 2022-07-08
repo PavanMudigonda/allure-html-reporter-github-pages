@@ -75,7 +75,6 @@ cat index-template.html > ./${INPUT_ALLURE_HISTORY}/index.html
 echo "├── <a href="./${INPUT_GITHUB_RUN_NUM}/index.html">RUN ID: ${INPUT_GITHUB_RUN_NUM} - Latest </a><br>" >> ./${INPUT_ALLURE_HISTORY}/index.html;
 ls -l ./${INPUT_ALLURE_HISTORY} | grep "^d" | sort -nr | awk -F' ' '{print $9;}' | sed 's/last-history//' | while read line;
     do
-    	    line=$((${line}));
 	    
 	    curl \
 		--silent \
