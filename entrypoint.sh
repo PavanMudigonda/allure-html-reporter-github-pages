@@ -82,7 +82,7 @@ ls -l ./${INPUT_ALLURE_HISTORY} | grep "^d" | sort -nr | awk -F' ' '{print $9;}'
 		--request GET \
 		--header 'Accept: application/vnd.github.v4+json' \
 		--header 'Content-Type: application/json' \
-		--header "Authorization: token ${GITHUB_TOKEN}" \
+		--header "Authorization: token ${INPUT_TOKEN}" \
 		--header 'cache-control: no-cache' \
 		"https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/runs" > temp.json;
 		
