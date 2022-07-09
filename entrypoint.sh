@@ -87,7 +87,8 @@ ls -l ./${INPUT_ALLURE_HISTORY} | grep "^d" | sort -nr | awk -F' ' '{print $9;}'
 	   "https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/workflows/${INPUT_WORKFLOW_ID}/runs" > temp.json;
 	   
 	CREATED_AT=$(cat temp.json | jq --argjson "RUN_NUM" "${line}" -r '.workflow_runs[] | select(.run_number==$RUN_NUM) | .created_at');
-	echo "├── <a href="./"${line}"/">RUN ID: "${line}" -  "${CREATED_AT}" </a><br>" >> ./${INPUT_ALLURE_HISTORY}/index.html;
+	NEW_CREATED_AT=`sed -e 's/T//' -e 's/z/UTC/' <<<"$CREATED_AT"`
+	echo "├── <a href="./"${line}"/">RUN ID: "${line}" -  "${NEW_CREATED_AT}" </a><br>" >> ./${INPUT_ALLURE_HISTORY}/index.html;
     done;
 echo "</html>" >> ./${INPUT_ALLURE_HISTORY}/index.html;
 # cat ./${INPUT_PLAYWRIGHT_HISTORY}/index.html
