@@ -74,22 +74,20 @@ cat index-template.html > ./${INPUT_ALLURE_HISTORY}/index.html
 
 echo "├── <a href="./${INPUT_GITHUB_RUN_NUM}/index.html">RUN ID: ${INPUT_GITHUB_RUN_NUM} - Latest </a><br>" >> ./${INPUT_ALLURE_HISTORY}/index.html;
 ls -l ./${INPUT_ALLURE_HISTORY} | grep "^d" | sort -nr | awk -F' ' '{print $9;}' | sed 's/last-history//' | while read line;
-    do
-	    
-	    curl \
-		--silent \
-		--location \
-		--request GET \
-		--header 'Accept: application/vnd.github.v4+json' \
-		--header 'Content-Type: application/json' \
-		--header "Authorization: token ${INPUT_TOKEN}" \
-		--header 'cache-control: no-cache' \
-		"https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/runs" > temp.json;
-		
+    do	    
+	curl \
+	   --silent \
+	   --location \
+	   --request GET \
+	   --header 'Accept: application/vnd.github.v4+json' \
+	   --header 'Content-Type: application/json' \
+	   --header "Authorization: token ${INPUT_TOKEN}" \
+	   --header 'cache-control: no-cache' \
+	   "https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/runs" > temp.json;
+	cat temp.json;	
 	CREATED_AT=$(cat temp.json | jq --argjson RUN_NUM "${line}" -r '.workflow_runs | select(.run_number==$RUN_NUM) | .created_at');
-	echo $CREATED_AT
-	echo "├── <a href="./"${line}"/">RUN ID: "${line}" -  "${CREATED_AT}" </a><br>" >> ./${INPUT_ALLURE_HISTORY}/index.html; 
-	
+	echo ${CREATED_AT};
+	echo "├── <a href="./"${line}"/">RUN ID: "${line}" -  "${CREATED_AT}" </a><br>" >> ./${INPUT_ALLURE_HISTORY}/index.html; 	
     done;
 echo "</html>" >> ./${INPUT_ALLURE_HISTORY}/index.html;
 # cat ./${INPUT_PLAYWRIGHT_HISTORY}/index.html
