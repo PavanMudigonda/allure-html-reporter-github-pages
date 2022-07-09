@@ -85,7 +85,7 @@ ls -l ./${INPUT_ALLURE_HISTORY} | grep "^d" | sort -nr | awk -F' ' '{print $9;}'
 	   --header 'cache-control: no-cache' \
 	   "https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/workflows/${INPUT_WORKFLOW_ID}/runs" > temp.json;
 	   
-	CREATED_AT=$(cat temp.json | jq --jsonargs RUN_NUM "${line}" -r '.workflow_runs | select(.run_number==$RUN_NUM) | .created_at');
+	CREATED_AT=$(cat temp.json | jq --args RUN_NUM "${line}" -r '.workflow_runs | select(.run_number==$RUN_NUM) | .created_at');
 	echo "├── <a href="./"${line}"/">RUN ID: "${line}" -  "${CREATED_AT}" </a><br>" >> ./${INPUT_ALLURE_HISTORY}/index.html;
     done;
 echo "</html>" >> ./${INPUT_ALLURE_HISTORY}/index.html;
