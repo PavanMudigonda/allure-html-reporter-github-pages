@@ -32,8 +32,8 @@
 EOF
 
 unset JAVA_HOME
-export TZ="/usr/share/zoneinfo/America/Toronto"
-DATE_WITH_TIME=`date "+%Y-%m-%d-%H-%M-%S-%Z"`
+export TZ="/usr/share/zoneinfo/America/Toronto";
+DATE_WITH_TIME=`date "+%Y-%m-%d %H:%M:%S %Z"`;
 mkdir -p ./${INPUT_GH_PAGES}
 mkdir -p ./${INPUT_ALLURE_HISTORY}
 cp -r ./${INPUT_GH_PAGES}/. ./${INPUT_ALLURE_HISTORY}
