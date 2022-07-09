@@ -33,6 +33,7 @@ EOF
 
 unset JAVA_HOME
 
+DATE_WITH_TIME=`date "+%Y%m%d-%H%M%S"`
 mkdir -p ./${INPUT_GH_PAGES}
 mkdir -p ./${INPUT_ALLURE_HISTORY}
 cp -r ./${INPUT_GH_PAGES}/. ./${INPUT_ALLURE_HISTORY}
@@ -72,7 +73,7 @@ fi
 
 cat index-template.html > ./${INPUT_ALLURE_HISTORY}/index.html
 
-echo "├── <a href="./${INPUT_GITHUB_RUN_NUM}/index.html">RUN ID: ${INPUT_GITHUB_RUN_NUM} - Latest </a><br>" >> ./${INPUT_ALLURE_HISTORY}/index.html;
+echo "├── <a href="./${INPUT_GITHUB_RUN_NUM}/index.html">RUN ID: ${INPUT_GITHUB_RUN_NUM} - ${DATE_WITH_TIME}(Latest)</a><br>" >> ./${INPUT_ALLURE_HISTORY}/index.html;
 ls -l ./${INPUT_ALLURE_HISTORY} | grep "^d" | sort -nr | awk -F' ' '{print $9;}' | sed 's/last-history//' | while read line;
     do	    
 	curl \
