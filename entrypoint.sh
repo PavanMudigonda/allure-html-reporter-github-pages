@@ -83,10 +83,10 @@ ls -l ./${INPUT_ALLURE_HISTORY} | grep "^d" | sort -nr | awk -F' ' '{print $9;}'
 	   --header 'Content-Type: application/json' \
 	   --header "Authorization: token ${INPUT_TOKEN}" \
 	   --header 'cache-control: no-cache' \
-	   "https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/runs" > temp.json;
+	   "https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/workflows/${INPUT_WORKFLOW_ID}/runs" > temp.json;
 	   
-	CREATED_AT=$(cat temp.json | jq --arg RUN_NUM "${line}" --arg GH_WF "${INPUT_GITHUB_WORKFLOW}" -r '.workflow_runs | select(.name==$GH_WF) | select(.run_number==$RUN_NUM) | .created_at');
-	echo "├── <a href="./"${line}"/">RUN ID: "${line}" -  "${CREATED_AT}" </a><br>" >> ./${INPUT_ALLURE_HISTORY}/index.html; 	
+	CREATED_AT=$(cat temp.json | jq --arg RUN_NUM "${line}" -r '.workflow_runs | select(.run_number==$RUN_NUM) | .created_at');
+	echo "├── <a href="./"${line}"/">RUN ID: "${line}" -  "${CREATED_AT}" </a><br>" >> ./${INPUT_ALLURE_HISTORY}/index.html;
     done;
 echo "</html>" >> ./${INPUT_ALLURE_HISTORY}/index.html;
 # cat ./${INPUT_PLAYWRIGHT_HISTORY}/index.html
