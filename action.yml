@@ -5,10 +5,6 @@ branding:
   icon: 'layout'
   color: 'green'
 inputs:
-  WORKFLOW_ID:
-    description: 'Workflow File NAME'
-    required: true
-    default: ''
   token:
     description: 'Github Token'
     required: true
