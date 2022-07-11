@@ -84,7 +84,7 @@ ls -l ./${INPUT_ALLURE_HISTORY} | grep "^d" | sort -nr | awk -F' ' '{print $9;}'
 	   --header 'Content-Type: application/json' \
 	   --header "Authorization: token ${INPUT_TOKEN}" \
 	   --header 'cache-control: no-cache' \
-	   "https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/workflows/${INPUT_WORKFLOW_ID}/runs" > temp.json;
+	   "https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/runs" > temp.json;
 	   
 	CREATED_AT=$(cat temp.json | jq --argjson "RUN_NUM" "${line}" --argjson "GH_WF" "${INPUT_GITHUB_WORKFLOW}" -r '.workflow_runs[] | select(.name==$GH_WF) | select(.run_number==$RUN_NUM) | .created_at');
 	NEW_CREATED_AT=`sed -e 's/T/ /' -e 's/Z/ UTC/' <<<"$CREATED_AT"`
