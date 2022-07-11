@@ -175,8 +175,7 @@ Default ``
  
 ## Sample Screenshot
 
-<img width="666" alt="image" src="https://user-images.githubusercontent.com/29324338/174334674-9ad8df6f-1a50-4cce-b30b-b39b82415d45.png">
-
+<img width="555" alt="image" src="https://user-images.githubusercontent.com/29324338/178267219-ab004598-3afa-4ecb-9e1d-fa769bb0f5bc.png">
 
 
 ## Sample GH Pages Screenshot
