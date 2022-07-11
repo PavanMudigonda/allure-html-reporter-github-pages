@@ -26,6 +26,7 @@ jobs:
         id: allure-report
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          WORKFLOW_ID: main.yml
           allure_results: allure-results
           gh_pages: gh-pages
           allure_report: allure-report
