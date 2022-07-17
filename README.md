@@ -80,6 +80,8 @@ Default ``
   if: always()
   id: allure-report
   with:
+    token: ${{ secrets.GITHUB_TOKEN }}
+    workflow_id: main.yml
     allure_results: allure-results
     gh_pages: gh-pages
     allure_report: allure-report
