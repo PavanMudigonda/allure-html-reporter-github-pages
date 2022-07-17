@@ -67,8 +67,6 @@ Default ``
     workflow_id: main.yml
     allure_results: allure-results
     gh_pages: gh-pages
-    allure_report: allure-report
-    allure_history: allure-history
     test_env: QA
 ```
 
@@ -84,8 +82,6 @@ Default ``
     workflow_id: main.yml
     allure_results: allure-results
     gh_pages: gh-pages
-    allure_report: allure-report
-    allure_history: allure-history    
 ```
 
 ## Publish to GitHub Pages
@@ -97,7 +93,7 @@ Default ``
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
-          publish_dir: allure-history
+          publish_dir: allure-history. # Previous Step provides output folder "allure-history" this needs to be uploaded to Github Pages
           keep_files: true 
 ```
 
