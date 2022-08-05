@@ -12,7 +12,7 @@ inputs:
   token:
     description: 'Github Token'
     required: true
-    default: ''
+    default: ${{ github.token }}
   test_env:
     description: 'Test Environment'
     required: true
