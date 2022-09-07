@@ -39,6 +39,6 @@ runs:
         $TOTAL_TC = [int]$FAILED_TC + [int]$PASSED_TC + [int]$SKIPPED_TC + [int]$UNKNOWN_TC
         "TOTAL_TC = [int]$TOTAL_TC" >> $Env.GITHUB_ENV
         Write-Host "CALCULATING PASS PERCENTAGE ACHIEVED"
-        PASS_PERCENTAGE = $FAILED/$TOTAL_TC
+        $PASS_PERCENTAGE = $FAILED / $TOTAL_TC
         Write-Host $PASS_PERCENTAGE
         
