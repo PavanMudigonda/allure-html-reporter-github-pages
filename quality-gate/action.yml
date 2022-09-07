@@ -7,8 +7,7 @@ branding:
 inputs:
   ALLURE_BEHAVIORS_CSV:
     description: 'ALLURE Behaviors CSV File'
-    required: false
-    default: '**/data/behaviors.csv'
+    required: true
   ENABLE_QUALITY_GATE:
     description: 'ALLURE Behaviors CSV File'
     required: true
