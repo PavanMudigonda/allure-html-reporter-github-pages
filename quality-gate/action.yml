@@ -27,7 +27,7 @@ runs:
       run: |        
         Write-Host "IMPORTING A CSV FILE IN POWERSHELL"        
         Get-Process | Export-Csv -Path ${{ inputs.ALLURE_BEHAVIORS_CSV }}
-        $CONTENT = Import-Csv -Path .\Processes.csv
+        $CONTENT = Import-Csv -Path ${{ inputs.ALLURE_BEHAVIORS_CSV }}
         $CSV_CONTENT = $CONTENT | Get-Member
         $PASSED_TESTS =  $CSV_CONTENT | ConvertFrom-Csv | Measure-Object "PASSED" -Sum
         $FAILED_TESTS =  $CSV_CONTENT | ConvertFrom-Csv | Measure-Object "FAILED" -Sum
