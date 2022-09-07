@@ -32,10 +32,10 @@ runs:
         Write-host "PASSED Test Cases: $CSV_FILE.PASSED" 
         Write-host "SKIPPED Test Cases: $CSV_FILE.SKIPPED"
         Write-host "UNKNOWN Test Cases: $CSV_FILE.UNKNOWN"
-        "FAILED_TC=[int]$CSV_FILE.FAILED" >> $Env.GITHUB_ENV
-        "PASSED_TC=[int]$CSV_FILE.PASSED" >> $Env.GITHUB_ENV
-        "SKIPPED_TC=[int]$CSV_FILE.SKIPPED" >> $Env.GITHUB_ENV
-        "UNKNOWN_TC=[int]$CSV_FILE.UNKNOWN" >> $Env.GITHUB_ENV
+        echo "FAILED_TC=[int]$CSV_FILE.FAILED" >> $Env.GITHUB_ENV
+        echo "PASSED_TC=[int]$CSV_FILE.PASSED" >> $Env.GITHUB_ENV
+        echo "SKIPPED_TC=[int]$CSV_FILE.SKIPPED" >> $Env.GITHUB_ENV
+        echo "UNKNOWN_TC=[int]$CSV_FILE.UNKNOWN" >> $Env.GITHUB_ENV
         $TOTAL_TC = [int]$FAILED_TC + [int]$PASSED_TC + [int]$SKIPPED_TC + [int]$UNKNOWN_TC
         "TOTAL_TC = [int]$TOTAL_TC" >> $Env.GITHUB_ENV
         Write-Host "CALCULATING PASS PERCENTAGE ACHIEVED"
