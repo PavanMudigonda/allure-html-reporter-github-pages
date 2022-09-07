@@ -36,8 +36,8 @@ runs:
         "PASSED_TC=[int]$CSV_FILE.PASSED" >> $Env.GITHUB_ENV
         "SKIPPED_TC=[int]$CSV_FILE.SKIPPED" >> $Env.GITHUB_ENV
         "UNKNOWN_TC=[int]$CSV_FILE.UNKNOWN" >> $Env.GITHUB_ENV
-        TOTAL_TC=[int]$FAILED_TC + [int]$PASSED_TC + [int]$SKIPPED_TC + [int]$UNKNOWN_TC
-        "TOTAL_TC=[int]$TOTAL_TC" >> $Env.GITHUB_ENV
+        TOTAL_TC = [int]$FAILED_TC + [int]$PASSED_TC + [int]$SKIPPED_TC + [int]$UNKNOWN_TC
+        "TOTAL_TC = [int]$TOTAL_TC" >> $Env.GITHUB_ENV
         Write-Host "CALCULATING PASS PERCENTAGE ACHIEVED"
         PASS_PERCENTAGE = $FAILED/$TOTAL_TC
         Write-Host $PASS_PERCENTAGE
