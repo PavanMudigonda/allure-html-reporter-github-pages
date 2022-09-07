@@ -28,10 +28,10 @@ runs:
         Write-Host "IMPORTING A CSV FILE IN POWERSHELL"
         $CSV_FILE = Import-Csv -Path "${{ inputs.ALLURE_BEHAVIORS_CSV }}"
         Write-Host "THE FILE IS IMPORTED USING CMDLET" 
-        Write-host "FAILED Test Cases: $CSV_FILE.FAILED"
-        Write-host "PASSED Test Cases: $CSV_FILE.PASSED" 
-        Write-host "SKIPPED Test Cases: $CSV_FILE.SKIPPED"
-        Write-host "UNKNOWN Test Cases: $CSV_FILE.UNKNOWN"
+        Write-host "FAILED Test Cases: $CSV_FILE._$.FAILED"
+        Write-host "PASSED Test Cases: $CSV_FILE._$.PASSED" 
+        Write-host "SKIPPED Test Cases: $CSV_FILE._$.SKIPPED"
+        Write-host "UNKNOWN Test Cases: $CSV_FILE._$.UNKNOWN"
         echo "FAILED_TC=[int]$CSV_FILE.FAILED" >> $Env.GITHUB_ENV
         echo "PASSED_TC=[int]$CSV_FILE.PASSED" >> $Env.GITHUB_ENV
         echo "SKIPPED_TC=[int]$CSV_FILE.SKIPPED" >> $Env.GITHUB_ENV
