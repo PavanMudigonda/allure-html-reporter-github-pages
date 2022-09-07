@@ -1,0 +1,44 @@
+name: 'allure-quality-gate'
+description: 'Allure Quality Gate'
+author: 'Pavan Mudigonda'
+branding:
+  icon: 'layout'
+  color: 'green'
+inputs:
+  ALLURE_BEHAVIORS_CSV:
+    description: 'ALLURE Behaviors CSV File'
+    required: false
+    default: '**/data/behaviors.csv'
+  ENABLE_QUALITY_GATE:
+    description: 'ALLURE Behaviors CSV File'
+    required: true
+    default: 'false'
+  MINIMUM_PASS_PERCENTAGE:
+    description: 'Minimum Pass Percentage Required to Pass Build'
+    required: false
+    default: 100
+    
+runs:
+  using: 'composite'
+  steps:
+    - name: Script
+      if: ${{ inputs.ENABLE_QUALITY_GATE == 'true' }}
+      shell: pwsh
+      run: |        
+        Write-Host "IMPORTING A CSV FILE IN POWERSHELL"
+        $CSV_FILE = Import-Csv -Path "${{ inputs.ALLURE_BEHAVIORS_CSV }}"
+        Write-Host "THE FILE IS IMPORTED USING CMDLET" 
+        Write-host "FAILED Test Cases: $CSV_FILE.FAILED"
+        Write-host "PASSED Test Cases: $CSV_FILE.PASSED" 
+        Write-host "SKIPPED Test Cases: $CSV_FILE.SKIPPED"
+        Write-host "UNKNOWN Test Cases: $CSV_FILE.UNKNOWN"
+        "FAILED_TC=[int]$CSV_FILE.FAILED" >> $Env.GITHUB_ENV
+        "PASSED_TC=[int]$CSV_FILE.PASSED" >> $Env.GITHUB_ENV
+        "SKIPPED_TC=[int]$CSV_FILE.SKIPPED" >> $Env.GITHUB_ENV
+        "UNKNOWN_TC=[int]$CSV_FILE.UNKNOWN" >> $Env.GITHUB_ENV
+        TOTAL_TC = $FAILED_TC+$PASSED_TC+$SKIPPED_TC+$UNKNOWN_TC
+        "TOTAL_TC=[int]$TOTAL_TC" >> $Env.GITHUB_ENV
+        Write-Host "CALCULATING PASS PERCENTAGE ACHIEVED"
+        PASS_PERCENTAGE = $FAILED/$TOTAL_TC
+        Write-Host $PASS_PERCENTAGE
+        
