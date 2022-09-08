@@ -55,17 +55,17 @@ runs:
         $MIN_PERCENTAGE = [int]${{ inputs.MINIMUM_PASS_PERCENTAGE }}
         echo "Minimum Percentage required is : $MIN_PERCENTAGE "
         echo "Minimum Percentage Required: $MIN_PERCENTAGE" >> $GITHUB_STEP_SUMMARY
-        $PASSED_TESTS = [int]${{ env.PASSED_TESTS }}
+        $PASSED_TESTS = [int]${PASSED_TESTS}
         Write-Output "Passed Tests: $PASSED_TESTS"
         echo "Passed Tests: $PASSED_TESTS" >> $GITHUB_STEP_SUMMARY
-        $FAILED_TESTS = [int]${{ env.FAILED_TESTS }}
+        $FAILED_TESTS = [int]${FAILED_TESTS}
         echo "Failed Tests: $PASSED_TESTS" >> $GITHUB_STEP_SUMMARY
         Write-Output "Failed Tests: $FAILED_TESTS"
-        $SKIPPED_TESTS = [int]${{ env.SKIPPED_TESTS }}
+        $SKIPPED_TESTS = [int]${SKIPPED_TESTS}
         echo "Skipped Tests: $SKIPPED_TESTS" >> $GITHUB_STEP_SUMMARY
         Write-Output "Skipped Tests: $SKIPPED_TESTS"
         echo "Total Tests: $SKIPPED_TESTS" >> $GITHUB_STEP_SUMMARY
-        $UNKNOWN_TESTS = [int]${{ env.UNKNOWN_TESTS }}
+        $UNKNOWN_TESTS = [int]${UNKNOWN_TESTS}
         echo "Unknown Tests: $UNKNOWN_TESTS" >> $GITHUB_STEP_SUMMARY
         Write-Output "Unkown Tests: $UNKNOWN_TESTS"        
         $TOTAL_TESTS = $PASSED_TESTS + $FAILED_TESTS + $SKIPPED_TESTS + $UNKNOWN_TESTS
