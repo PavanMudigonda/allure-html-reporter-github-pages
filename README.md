@@ -111,6 +111,19 @@ Default ``
       target_url: PavanMudigonda.github.io/allure-html-reporter-github-pages/${{ github.run_number }}
 ```
 
+
+If you need to have a quality gate setup, you can add this below step as last step in your allure-gh-pages action
+
+ ```
+      - name: Run Quality Gate Check
+        uses: PavanMudigonda/allure-html-reporter-github-pages/quality-gate@v1.1
+        with:
+          ENABLE_QUALITY_GATE: true
+          MINIMUM_PASS_PERCENTAGE: 75
+          ALLURE_BEHAVIORS_CSV: 'allure/data/behaviors.csv'
+
+ ```
+ 
 ## Also you can post link to the report to MS Teams
 ```yaml
 
@@ -182,3 +195,6 @@ Default ``
 
 <img width="1440" alt="image" src="https://user-images.githubusercontent.com/29324338/174334734-8e3857d6-3a95-4027-832c-c512c3997aca.png">
 
+
+
+          
