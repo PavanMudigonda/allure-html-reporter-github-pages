@@ -79,6 +79,7 @@ runs:
         }
         
     - name: print summary
+      if: always()
       shell: bash
       run: |
         echo "Minimum Percentage Required: $MIN_PERCENTAGE" >> $GITHUB_STEP_SUMMARY
