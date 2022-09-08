@@ -25,9 +25,9 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
       - name: Run Quality Gate Check
-        uses: ./quality-gate
+        uses: PavanMudigonda/allure-html-reporter-github-pages/quality-gate@v1.1
         with:
           ENABLE_QUALITY_GATE: true
-          MINIMUM_PASS_PERCENTAGE: 100
+          MINIMUM_PASS_PERCENTAGE: 75
           ALLURE_BEHAVIORS_CSV: 'allure/data/behaviors.csv'
         
