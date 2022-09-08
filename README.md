@@ -4,12 +4,13 @@
 | **Any HTML Reports** | [GH Action Link](https://github.com/marketplace/actions/html-reporter-github-pages) | [GH Action Link](https://github.com/marketplace/actions/html-reporter-azure-website)            | [GH Action Link](https://github.com/marketplace/actions/html-reporter-aws-s3-website) |
 
 
-
 # Allure Report with history action
 
 Generates Allure Report with history.
 
 Example workflow file [allure-html-reporter-github-pages](https://github.com/PavanMudigonda/allure-html-reporter-github-pages/blob/main/.github/workflows/main.yml)
+
+## If you like my Github Action, please STAR ⭐ it. 
 
 ## Inputs
 
