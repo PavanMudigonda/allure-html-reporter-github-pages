@@ -24,7 +24,7 @@ runs:
     - name: set variable
       shell: bash
       run: echo "ALLURE_BEHAVIORS_CSV=${{ inputs.ALLURE_BEHAVIORS_CSV }}" >> $GITHUB_ENV
-      - name: Script
+    - name: Script
       if: ${{ inputs.ENABLE_QUALITY_GATE == 'true' }}
       id: csv_reporter
       shell: pwsh
