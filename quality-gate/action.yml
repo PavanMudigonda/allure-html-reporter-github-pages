@@ -26,13 +26,11 @@ runs:
       shell: pwsh
       run: |        
         Write-Host "IMPORTING A CSV FILE IN POWERSHELL"        
-        Get-Process | Export-Csv -Path ${{ inputs.ALLURE_BEHAVIORS_CSV }}
-        $CONTENT = Import-Csv -Path ${{ inputs.ALLURE_BEHAVIORS_CSV }}
-        $CSV_CONTENT = $CONTENT | Get-Member
-        $PASSED_TESTS =  $CSV_CONTENT | Measure-Object PASSED -Sum
-        $FAILED_TESTS =  $CSV_CONTEN | Measure-Object FAILED -Sum
-        $SKIPPED_TESTS = $CSV_CONTENT | Measure-Object SKIPPED -Sum
-        $UNKNOWN_TESTS = $CSV_CONTENT | Measure-Object UNKNOWN -Sum        
+        $CSV_CONTENT = Import-Csv -Path ${{ inputs.ALLURE_BEHAVIORS_CSV }}
+        $PASSED_TESTS =  $CSV_CONTENT | Measure-Object -Property PASSED -Sum
+        $FAILED_TESTS =  $CSV_CONTEN | Measure-Object -Property FAILED -Sum
+        $SKIPPED_TESTS = $CSV_CONTENT | Measure-Object -Property SKIPPED -Sum
+        $UNKNOWN_TESTS = $CSV_CONTENT | Measure-Object -Property UNKNOWN -Sum       
         echo "FAILED_TESTS=[int]$FAILED_TESTS" >> $Env.GITHUB_ENV
         echo "PASSED_TESTS=[int]$PASSED_TESTS" >> $Env.GITHUB_ENV
         echo "SKIPPED_TESTS=[int]$SKIPPED_TESTS" >> $Env.GITHUB_ENV
