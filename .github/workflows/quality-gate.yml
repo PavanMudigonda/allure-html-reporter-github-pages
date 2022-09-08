@@ -28,6 +28,6 @@ jobs:
         uses: ./quality-gate
         with:
           ENABLE_QUALITY_GATE: true
-          MINIMUM_PASS_PERCENTAGE: 10
+          MINIMUM_PASS_PERCENTAGE: 100
           ALLURE_BEHAVIORS_CSV: 'allure/data/behaviors.csv'
         
