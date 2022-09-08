@@ -29,5 +29,5 @@ jobs:
         with:
           ENABLE_QUALITY_GATE: true
           MINIMUM_PASS_PERCENTAGE: 10
-          ALLURE_BEHAVIORS_CSV: './allure/data/behaviors.csv'
+          ALLURE_BEHAVIORS_CSV: 'allure/data/behaviors.csv'
         
