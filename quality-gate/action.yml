@@ -27,7 +27,7 @@ runs:
     - name: Script
       if: ${{ inputs.ENABLE_QUALITY_GATE == 'true' }}
       id: csv_reporter
-      shell: pwsh
+      shell: ps1
       run: |        
         Write-Host "IMPORTING A CSV FILE IN POWERSHELL"
         $CSV_CONTENT = Import-Csv -Path "${{ env.ALLURE_BEHAVIORS_CSV }}"
@@ -39,6 +39,10 @@ runs:
         echo "PASSED_TESTS=[int]$PASSED_TESTS" >> $GITHUB_ENV
         echo "SKIPPED_TESTS=[int]$SKIPPED_TESTS" >> $GITHUB_ENV
         echo "UNKNOWN_TESTS=[int]$UNKNOWN_TESTS" >> $GITHUB_ENV
+        Write-Output $PASSED_TESTS
+        Write-Output $FAILED_TESTS
+        Write-Output $SKIPPED_TESTS
+        Write-Output $UNKNOWN_TESTS
         echo "##[set-output name=PASSED_TESTS;]${PASSED_TESTS}"
         echo "##[set-output name=FAILED_TESTS;]${FAILED_TESTS}"
         echo "##[set-output name=SKIPPED_TESTS;]${SKIPPED_TESTS}"
