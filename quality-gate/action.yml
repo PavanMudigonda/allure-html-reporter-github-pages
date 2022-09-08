@@ -27,7 +27,7 @@ runs:
     - name: Script
       if: ${{ inputs.ENABLE_QUALITY_GATE == 'true' }}
       id: csv_reporter
-      shell: ps1
+      shell: pwsh
       run: |        
         Write-Host "IMPORTING A CSV FILE IN POWERSHELL"
         $CSV_CONTENT = Import-Csv -Path "${{ env.ALLURE_BEHAVIORS_CSV }}"
