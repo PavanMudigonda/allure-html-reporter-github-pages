@@ -111,7 +111,7 @@ Default ``
       target_url: PavanMudigonda.github.io/allure-html-reporter-github-pages/${{ github.run_number }}
 ```
 
-
+## Quality Gate
 If you need to have a quality gate setup, you can add this below step as last step in your allure-gh-pages action
 
  ```
