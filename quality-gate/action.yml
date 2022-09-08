@@ -82,9 +82,9 @@ runs:
       shell: bash
       run: |
         echo "Minimum Percentage Required: $MIN_PERCENTAGE" >> $GITHUB_STEP_SUMMARY
-        echo "Passed Tests: $PASSED_TESTS" >> $GITHUB_STEP_SUMMARY
-        echo "Failed Tests: $PASSED_TESTS" >> $GITHUB_STEP_SUMMARY
-        echo "Skipped Tests: $SKIPPED_TESTS" >> $GITHUB_STEP_SUMMARY
-        echo "Total Tests: $SKIPPED_TESTS" >> $GITHUB_STEP_SUMMARY
-        echo "Unknown Tests: $UNKNOWN_TESTS" >> $GITHUB_STEP_SUMMARY
-        echo "Pass Percentage Achieved: $PASS_PERCENTAGE_STRING" >> $GITHUB_STEP_SUMMARY
+        echo "Passed Tests: ${{ env.PASSED_TESTS }}" >> $GITHUB_STEP_SUMMARY
+        echo "Failed Tests: ${{ env.PASSED_TESTS }}" >> $GITHUB_STEP_SUMMARY
+        echo "Skipped Tests: ${{ env.SKIPPED_TESTS }}" >> $GITHUB_STEP_SUMMARY
+        echo "Total Tests: ${{ env.SKIPPED_TESTS }}" >> $GITHUB_STEP_SUMMARY
+        echo "Unknown Tests: ${{ env.UNKNOWN_TESTS }}" >> $GITHUB_STEP_SUMMARY
+        echo "Pass Percentage Achieved: ${{ env.PASS_PERCENTAGE_STRING }}" >> $GITHUB_STEP_SUMMARY
