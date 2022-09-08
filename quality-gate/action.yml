@@ -47,11 +47,6 @@ runs:
         echo "##[set-output name=FAILED_TESTS;]${FAILED_TESTS}"
         echo "##[set-output name=SKIPPED_TESTS;]${SKIPPED_TESTS}"
         echo "##[set-output name=UNKNOWN_TESTS;]${UNKNOWN_TESTS}"
-        
-    - name: Gate
-      if: ${{ inputs.ENABLE_QUALITY_GATE == 'true' }}
-      shell: pwsh
-      run: |
         $MIN_PERCENTAGE = [int]${{ inputs.MINIMUM_PASS_PERCENTAGE }}
         echo "Minimum Percentage required is : $MIN_PERCENTAGE "
         echo "Minimum Percentage Required: $MIN_PERCENTAGE" >> $GITHUB_STEP_SUMMARY
