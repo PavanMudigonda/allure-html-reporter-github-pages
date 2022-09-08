@@ -21,6 +21,7 @@ inputs:
 runs:
   using: 'composite'
   steps:
+      
     - name: set variable
       shell: bash
       run: echo "ALLURE_BEHAVIORS_CSV=${{ inputs.ALLURE_BEHAVIORS_CSV }}" >> $GITHUB_ENV
@@ -77,13 +78,13 @@ runs:
           exit 1
         }
         
-      - name: print summary
-        shell: bash
-        run: |
-          echo "Minimum Percentage Required: $MIN_PERCENTAGE" >> $GITHUB_STEP_SUMMARY
-          echo "Passed Tests: $PASSED_TESTS" >> $GITHUB_STEP_SUMMARY
-          echo "Failed Tests: $PASSED_TESTS" >> $GITHUB_STEP_SUMMARY
-          echo "Skipped Tests: $SKIPPED_TESTS" >> $GITHUB_STEP_SUMMARY
-          echo "Total Tests: $SKIPPED_TESTS" >> $GITHUB_STEP_SUMMARY
-          echo "Unknown Tests: $UNKNOWN_TESTS" >> $GITHUB_STEP_SUMMARY
-          echo "Pass Percentage Achieved: $PASS_PERCENTAGE_STRING" >> $GITHUB_STEP_SUMMARY
+    - name: print summary
+      shell: bash
+      run: |
+        echo "Minimum Percentage Required: $MIN_PERCENTAGE" >> $GITHUB_STEP_SUMMARY
+        echo "Passed Tests: $PASSED_TESTS" >> $GITHUB_STEP_SUMMARY
+        echo "Failed Tests: $PASSED_TESTS" >> $GITHUB_STEP_SUMMARY
+        echo "Skipped Tests: $SKIPPED_TESTS" >> $GITHUB_STEP_SUMMARY
+        echo "Total Tests: $SKIPPED_TESTS" >> $GITHUB_STEP_SUMMARY
+        echo "Unknown Tests: $UNKNOWN_TESTS" >> $GITHUB_STEP_SUMMARY
+        echo "Pass Percentage Achieved: $PASS_PERCENTAGE_STRING" >> $GITHUB_STEP_SUMMARY
