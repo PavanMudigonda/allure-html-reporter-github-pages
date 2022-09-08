@@ -29,10 +29,10 @@ runs:
         Write-Host "IMPORTING A CSV FILE IN POWERSHELL"      
         Set-Variable -Name "ALLURE_BEHAVIORS_CSV" -Value "${{ inputs.ALLURE_BEHAVIORS_CSV }}"
         $CSV_CONTENT = Import-Csv -Path $ALLURE_BEHAVIORS_CSV
-        $PASSED_TESTS =  ($CSV_CONTENT | Measure-Object -Property PASSED -Sum).sum
-        $FAILED_TESTS =  ($CSV_CONTEN | Measure-Object -Property FAILED -Sum).sum
-        $SKIPPED_TESTS = ($CSV_CONTENT | Measure-Object -Property SKIPPED -Sum).sum
-        $UNKNOWN_TESTS = ($CSV_CONTENT | Measure-Object -Property UNKNOWN -Sum).sum   
+        $PASSED_TESTS =  ($CSV_CONTENT).PASSED
+        $FAILED_TESTS =  ($CSV_CONTEN).FAILED
+        $SKIPPED_TESTS = ($CSV_CONTENT).SKIPPED
+        $UNKNOWN_TESTS = ($CSV_CONTENT).UNKNOWN  
         echo "FAILED_TESTS=[int]$FAILED_TESTS" >> $Env.GITHUB_ENV
         echo "PASSED_TESTS=[int]$PASSED_TESTS" >> $Env.GITHUB_ENV
         echo "SKIPPED_TESTS=[int]$SKIPPED_TESTS" >> $Env.GITHUB_ENV
