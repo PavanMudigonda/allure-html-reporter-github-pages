@@ -24,7 +24,7 @@ runs:
     - name: set variable
       shell: bash
       run: echo "ALLURE_BEHAVIORS_CSV=${{ inputs.ALLURE_BEHAVIORS_CSV }}" >> $GITHUB_ENV
-    - name: Script
+      - name: Script
       if: ${{ inputs.ENABLE_QUALITY_GATE == 'true' }}
       id: csv_reporter
       shell: pwsh
@@ -76,10 +76,9 @@ runs:
           Write-Output "Minimum Pass Percentage Required is $MIN_PERCENTAGE, But Achieved is $PASS_PERCENTAGE_STRING"
           exit 1
         }
-        
-     - name: print summary
-       shell: bash
-       run: |
+      - name: print summary
+        shell: bash
+        run: |
           echo "Minimum Percentage Required: $MIN_PERCENTAGE" >> $GITHUB_STEP_SUMMARY
           echo "Passed Tests: $PASSED_TESTS" >> $GITHUB_STEP_SUMMARY
           echo "Failed Tests: $PASSED_TESTS" >> $GITHUB_STEP_SUMMARY
