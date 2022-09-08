@@ -8,6 +8,7 @@ inputs:
   ALLURE_BEHAVIORS_CSV:
     description: 'ALLURE Behaviors CSV File'
     required: true
+    default: '**/data/behaviors.csv'
   ENABLE_QUALITY_GATE:
     description: 'ALLURE Behaviors CSV File'
     required: true
@@ -26,7 +27,7 @@ runs:
       shell: pwsh
       run: |        
         Write-Host "IMPORTING A CSV FILE IN POWERSHELL"      
-        $ALLURE_BEHAVIORS_CSV = ${{ inputs.ALLURE_BEHAVIORS_CSV }}
+        Set-Variable -Name "ALLURE_BEHAVIORS_CSV" -Value "${{ inputs.ALLURE_BEHAVIORS_CSV }}"
         $CSV_CONTENT = Import-Csv -Path $ALLURE_BEHAVIORS_CSV
         $PASSED_TESTS =  ($CSV_CONTENT | Measure-Object -Property PASSED -Sum).sum
         $FAILED_TESTS =  ($CSV_CONTEN | Measure-Object -Property FAILED -Sum).sum
