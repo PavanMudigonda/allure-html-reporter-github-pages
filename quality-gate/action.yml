@@ -35,10 +35,10 @@ runs:
         $FAILED_TESTS =  ($CSV_CONTEN).FAILED
         $SKIPPED_TESTS = ($CSV_CONTENT).SKIPPED
         $UNKNOWN_TESTS = ($CSV_CONTENT).UNKNOWN  
-        echo "FAILED_TESTS=[int]$FAILED_TESTS" >> $Env.GITHUB_ENV
-        echo "PASSED_TESTS=[int]$PASSED_TESTS" >> $Env.GITHUB_ENV
-        echo "SKIPPED_TESTS=[int]$SKIPPED_TESTS" >> $Env.GITHUB_ENV
-        echo "UNKNOWN_TESTS=[int]$UNKNOWN_TESTS" >> $Env.GITHUB_ENV
+        echo "FAILED_TESTS=[int]$FAILED_TESTS" >> $GITHUB_ENV
+        echo "PASSED_TESTS=[int]$PASSED_TESTS" >> $GITHUB_ENV
+        echo "SKIPPED_TESTS=[int]$SKIPPED_TESTS" >> $GITHUB_ENV
+        echo "UNKNOWN_TESTS=[int]$UNKNOWN_TESTS" >> $GITHUB_ENV
         echo "##[set-output name=PASSED_TESTS;]${PASSED_TESTS}"
         echo "##[set-output name=FAILED_TESTS;]${FAILED_TESTS}"
         echo "##[set-output name=SKIPPED_TESTS;]${SKIPPED_TESTS}"
