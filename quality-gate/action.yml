@@ -30,7 +30,7 @@ runs:
       shell: pwsh
       run: |        
         Write-Host "IMPORTING A CSV FILE IN POWERSHELL"
-        $CSV_CONTENT = Import-Csv -Path "$Env.ALLURE_BEHAVIORS_CSV"
+        $CSV_CONTENT = Import-Csv -Path "${{ env.ALLURE_BEHAVIORS_CSV }}"
         $PASSED_TESTS =  ($CSV_CONTENT).PASSED
         $FAILED_TESTS =  ($CSV_CONTEN).FAILED
         $SKIPPED_TESTS = ($CSV_CONTENT).SKIPPED
