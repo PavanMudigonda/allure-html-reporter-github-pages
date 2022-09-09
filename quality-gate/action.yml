@@ -23,7 +23,7 @@ runs:
   steps:
       
     - name: set variable
-      shell: bash
+      shell: powershell
       run: echo "ALLURE_BEHAVIORS_CSV=${{ inputs.ALLURE_BEHAVIORS_CSV }}" >> $GITHUB_ENV
     - name: Script
       if: ${{ inputs.ENABLE_QUALITY_GATE == 'true' }}
